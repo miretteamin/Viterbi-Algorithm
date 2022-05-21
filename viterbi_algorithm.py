@@ -17,8 +17,7 @@ def viterbi_algorithm(states, obsSeq, pi, transMat, emitMat):
                     maxPrev = prev
 
             nodesValues[i][st] = {"prob": maxProb, "prev": maxPrev}
- 
-    
+            
     res = []
     lastState = None
     maxProb = 0.0
@@ -39,6 +38,8 @@ def viterbi_algorithm(states, obsSeq, pi, transMat, emitMat):
             previousState = nodesValues[i + 1][previousState]["prev"]
 
     return {'sequence': ' '.join(res), 'prob': maxProb}
+
+
 
 
 # Input
@@ -76,5 +77,4 @@ print("\nProblem Input\n----------------------","\nStates: ", states, "\nPi: ", 
 
 # Output 
 res = viterbi_algorithm(states, obsSeq, pi, matrixA, matrixB)
-
 print("Highest probability goes to this sequence:", res['sequence'], "\nWith probability = ", res['prob'])
